@@ -128,4 +128,5 @@ trait Likable
     {
         return $this->likes_count;
     }
+
 }
