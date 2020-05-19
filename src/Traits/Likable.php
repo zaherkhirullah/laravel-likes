@@ -107,7 +107,7 @@ trait Likable
      *
      * @return void
      */
-    public static function bootLikeable()
+    public static function bootLikable()
     {
         static::deleted(function ($model) {
             $model->likes()->delete();
