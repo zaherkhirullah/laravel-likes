@@ -1,0 +1,42 @@
+{
+  "name": "hayrullah/laravel-likes",
+  "description": "This Library improved to record request likes and make statistics for all links which liked.",
+  "type": "library",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "keywords": [
+    "likes",
+    "laravel-likes",
+    "like",
+    "page likes",
+    "model likes",
+    "like country",
+    "like statistics",
+    "like records",
+    "like counter"
+  ],
+  "authors": [
+    {
+      "name": "Zahir Hayrullah",
+      "email": "info@zaherr.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "laravel/framework": "^5.5|^6.0|^7.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Hayrullah\\LaravelLikes\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Hayrullah\\LaravelLikes\\LikeServiceProvider"
+      ]
+    }
+  }
+}
