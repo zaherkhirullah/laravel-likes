@@ -32,7 +32,7 @@ class Like extends Model
      *
      * @return MorphTo
      */
-    public function likeable()
+    public function likable()
     {
         return $this->morphTo();
     }
