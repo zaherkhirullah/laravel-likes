@@ -2,11 +2,9 @@
 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hayrullah/laravel-likes.svg?style=flat-square)](https://packagist.org/packages/hayrullah/laravel-likes)
-![](https://github.com/hayrullah/laravel-likes/workflows/Run%20Tests/badge.svg?branch=master)
+[](https://github.com/hayrullah/laravel-likes/workflows/Run%20Tests/badge.svg?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/hayrullah/laravel-likes.svg?style=flat-square)](https://packagist.org/packages/hayrullah/laravel-likes)
-[![GitHub issues](https://img.shields.io/github/issues/zaherkhirullah/laravel-likes)](https://github.com/zaherkhirullah/laravel-likes/issues)
-[![GitHub forks](https://img.shields.io/github/forks/zaherkhirullah/laravel-likes)](https://github.com/zaherkhirullah/laravel-likes/network)
-![PHP Composer](https://github.com/zaherkhirullah/laravel-likes/workflows/PHP%20Composer/badge.svg?branch=master)
+[PHP Composer](https://github.com/zaherkhirullah/laravel-likes/workflows/PHP%20Composer/badge.svg?branch=master)
 [![GitHub license](https://img.shields.io/github/license/zaherkhirullah/laravel-likes)](https://github.com/zaherkhirullah/laravel-likes)
 [![Quality Score](https://img.shields.io/scrutinizer/g/zaherkhirullah/laravel-likes.svg?style=flat-square)](https://scrutinizer-ci.com/g/zaherkhirullah/laravel-likes)
 [![`StyleCI](https://styleci.io/repos/264623457/shield)](https://styleci.io/repos/264623457)
@@ -21,14 +19,14 @@ See the [DOCUMENTATION](https://packagist.org/packages/hayrullah/laravel-likes) 
 
 ### INSTALLATION
 
-```
+``` php
 $ composer require hayrullah/laravel-likes
  ```
 
 - In Laravel >=5.5 this package will automatically get registered. 
 For older versions, update your `config/app.php` by adding an entry for the service provider.
 
-```php
+``` php
 'providers' => [
     // ...
     Hayrullah\Likes\LikeServiceProvider::class,
@@ -37,13 +35,13 @@ For older versions, update your `config/app.php` by adding an entry for the serv
 
 - Publish the database from the command line:
 
-```shell
+``` shell
 php artisan vendor:publish --provider="Hayrullah\Likes\LikeServiceProvider" 
 ```
 
 - Migrate the database from the command line:
 
-```shell
+``` shell
 php artisan migrate
 ```
 
