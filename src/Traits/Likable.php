@@ -17,35 +17,15 @@ use Illuminate\Support\Facades\Auth;
 trait Likable
 {
     /**
-     * Define a polymorphic one-to-many relationship.
+     * Add deleted observer to delete likes registers
      *
-     * @return MorphMany
+     * @return void
      */
-    public function likes()
+    public static function bootLikable()
     {
-        return $this->morphMany(Like::class, 'likable');
-    }
-
-    /**
-     * Add this Object to the user likes
-     *
-     * @param int $user_id
-     */
-    public function addLike($user_id = null)
-    {
-        $like = new Like(['user_id' => $this->getUserId($user_id)]);
-        $this->likes()->save($like);
-    }
-
-    /**
-     * Remove this Object from the user likes
-     *
-     * @param int $user_id [if  null its added to the auth user]
-     *
-     */
-    public function removeLike($user_id = null)
-    {
-        $this->likes()->where('user_id', $this->getUserId($user_id))->delete();
+        static::deleted(function ($model) {
+            $model->likes()->delete();
+        });
     }
 
     /**
@@ -68,6 +48,53 @@ trait Likable
     public function isLiked($user_id = null)
     {
         return $this->likes()->where('user_id', $this->getUserId($user_id))->exists();
+    }
+
+    /**
+     * Define a polymorphic one-to-many relationship.
+     *
+     * @return MorphMany
+     */
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
+
+    /**
+     * @param null $user_id (if null its added to the auth user)
+     *
+     * @return null
+     */
+    private function getUserId($user_id = null)
+    {
+        $user_id = ($user_id) ? $user_id : null;
+        if (!$user_id) {
+            \auth()->check() ? Auth::id() : null;
+        }
+
+        return $user_id;
+    }
+
+    /**
+     * Remove this Object from the user likes
+     *
+     * @param int $user_id [if  null its added to the auth user]
+     *
+     */
+    public function removeLike($user_id = null)
+    {
+        $this->likes()->where('user_id', $this->getUserId($user_id))->delete();
+    }
+
+    /**
+     * Add this Object to the user likes
+     *
+     * @param int $user_id
+     */
+    public function addLike($user_id = null)
+    {
+        $like = new Like(['user_id' => $this->getUserId($user_id)]);
+        $this->likes()->save($like);
     }
 
     /**
@@ -100,32 +127,5 @@ trait Likable
     public function likesCount()
     {
         return $this->likes_count;
-    }
-
-    /**
-     * Add deleted observer to delete likes registers
-     *
-     * @return void
-     */
-    public static function bootLikable()
-    {
-        static::deleted(function ($model) {
-            $model->likes()->delete();
-        });
-    }
-
-    /**
-     * @param null $user_id (if null its added to the auth user)
-     *
-     * @return null
-     */
-    private function getUserId($user_id = null)
-    {
-        $user_id = ($user_id) ? $user_id : null;
-        if (!$user_id) {
-            \auth()->check() ? Auth::id() : null;
-        }
-
-        return $user_id;
     }
 }

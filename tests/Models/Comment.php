@@ -9,6 +9,6 @@ class Comment extends Model
 {
     use Likable;
 
-   protected $table = 'posts';
-   protected $guarded = [];
+    protected $table = 'posts';
+    protected $guarded = [];
 }

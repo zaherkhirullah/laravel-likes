@@ -2,13 +2,13 @@
 
 namespace Hayrullah\Likes\Test;
 
+use CreateFavoritesTable;
 use Hayrullah\Likes\LikeServiceProvider;
-use Illuminate\Database\Schema\Blueprint;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Hayrullah\Likes\Models\Like;
 use Hayrullah\Likes\Test\Models\Article;
 use Hayrullah\Likes\Test\Models\Comment;
 use Hayrullah\Likes\Test\Models\User;
+use Illuminate\Database\Schema\Blueprint;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -17,43 +17,6 @@ abstract class TestCase extends OrchestraTestCase
         parent::setUp();
 
         $this->setUpDatabase();
-    }
-
-    protected function checkRequirements()
-    {
-        parent::checkRequirements();
-
-        collect($this->getAnnotations())->filter(function ($location) {
-            return in_array('!Travis', array_get($location, 'requires', []));
-        })->each(function ($location) {
-            getenv('TRAVIS') && $this->markTestSkipped('Travis will not run this test.');
-        });
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            LikeServiceProvider::class,
-        ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('database.default', 'sqlite');
-
-        $app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
-            'database' => $this->getTempDirectory().'/database.sqlite',
-            'prefix'   => '',
-        ]);
-
-        if (starts_with($app->version(), '5.1')) {
-            $app['config']->set('auth.model', User::class);
-        } else {
-            $app['config']->set('auth.providers.users.model', User::class);
-        }
-
-        $app['config']->set('app.key', '6rE9Nz59bGRbeMATftriyQjrpF7DcOQm');
     }
 
     protected function setUpDatabase()
@@ -71,16 +34,16 @@ abstract class TestCase extends OrchestraTestCase
         file_put_contents($this->getTempDirectory().'/database.sqlite', null);
     }
 
+    public function getTempDirectory()
+    {
+        return __DIR__.'/temp';
+    }
+
     protected function CreateFavoritesTable()
     {
         include_once '__DIR__'.'/../migrations/create_likes_table.php.stub';
 
-        (new \CreateFavoritesTable())->up();
-    }
-
-    public function getTempDirectory()
-    {
-        return __DIR__.'/temp';
+        (new CreateFavoritesTable())->up();
     }
 
     protected function createTables(...$tableNames)
@@ -103,5 +66,42 @@ abstract class TestCase extends OrchestraTestCase
                 $modelClass::create(['name' => "name {$index}"]);
             }
         });
+    }
+
+    public function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('database.default', 'sqlite');
+
+        $app['config']->set('database.connections.sqlite', [
+            'driver'   => 'sqlite',
+            'database' => $this->getTempDirectory().'/database.sqlite',
+            'prefix'   => '',
+        ]);
+
+        if (starts_with($app->version(), '5.1')) {
+            $app['config']->set('auth.model', User::class);
+        } else {
+            $app['config']->set('auth.providers.users.model', User::class);
+        }
+
+        $app['config']->set('app.key', '6rE9Nz59bGRbeMATftriyQjrpF7DcOQm');
+    }
+
+    protected function checkRequirements()
+    {
+        parent::checkRequirements();
+
+        collect($this->getAnnotations())->filter(function ($location) {
+            return in_array('!Travis', array_get($location, 'requires', []));
+        })->each(function ($location) {
+            getenv('TRAVIS') && $this->markTestSkipped('Travis will not run this test.');
+        });
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            LikeServiceProvider::class,
+        ];
     }
 }

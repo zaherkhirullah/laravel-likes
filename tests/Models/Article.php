@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use Likable;
-   
-   protected $table = 'articles';
-   protected $guarded = [];
+
+    protected $table = 'articles';
+    protected $guarded = [];
 }

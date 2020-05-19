@@ -16,16 +16,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 trait Likability
 {
     /**
-     * Define a one-to-many relationship.
-     *
-     * @return HasMany
-     */
-    public function likes()
-    {
-        return $this->hasMany(Like::class, 'user_id');
-    }
-
-    /**
      * Return a collection with the User likes Model.
      * The Model needs to have the likablet.
      *
@@ -44,6 +34,16 @@ trait Likability
 
             return [$like['likable']->id => $like['likable']];
         });
+    }
+
+    /**
+     * Define a one-to-many relationship.
+     *
+     * @return HasMany
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'user_id');
     }
 
     /**
