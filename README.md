@@ -1,4 +1,4 @@
-# Laravel Visits Management System 
+# Laravel Likes Management System 
 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hayrullah/laravel-likes.svg?style=flat-square)](https://packagist.org/packages/hayrullah/laravel-likes)
