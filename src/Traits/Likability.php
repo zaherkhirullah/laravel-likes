@@ -1,8 +1,8 @@
 <?php
 
-namespace Hayrullah\LaravelLikes\Traits;
+namespace Hayrullah\Likes\Traits;
 
-use Hayrullah\LaravelLikes\Models\Like;
+use Hayrullah\Likes\Models\Like;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

@@ -29,13 +29,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Hayrullah\\LaravelLikes\\": "src/"
+      "Hayrullah\\Likes\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Hayrullah\\LaravelLikes\\LikeServiceProvider"
+        "Hayrullah\\Likes\\LikeServiceProvider"
       ]
     }
   }

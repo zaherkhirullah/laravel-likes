@@ -1,6 +1,6 @@
 <?php
 
-namespace Hayrullah\LaravelLikes;
+namespace Hayrullah\Likes;
 
 use Illuminate\Support\ServiceProvider;
 

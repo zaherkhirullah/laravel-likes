@@ -1,6 +1,6 @@
 <?php
 
-namespace Hayrullah\LaravelLikes\Traits;
+namespace Hayrullah\Likes\Traits;
 
 use Hayrullah\LaravelLikes\Models\Like;
 use Illuminate\Database\Eloquent\Collection;

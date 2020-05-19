@@ -1,6 +1,6 @@
 <?php
 
-namespace Hayrullah\Laravellikes\Models;
+namespace Hayrullah\Likes\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
