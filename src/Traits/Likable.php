@@ -49,6 +49,18 @@ trait Likable
     }
 
     /**
+     * Toggle the like status from this Object
+     *
+     * @param int $user_id
+     */
+    public function toggleLike($user_id = null)
+    {
+        $this->isLiked($user_id) ? $this->removeLike($user_id) : $this->addLike($user_id);
+    }
+
+
+
+    /**
      * Add deleted observer to delete likes registers
      *
      * @return void
