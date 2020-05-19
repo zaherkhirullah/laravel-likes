@@ -27,6 +27,40 @@ trait Likable
     }
 
     /**
+     * Add this Object to the user likes
+     *
+     * @param int $user_id
+     */
+    public function addLike($user_id = null)
+    {
+        $like = new Like(['user_id' => $this->getUserId($user_id)]);
+        $this->likes()->save($like);
+    }
+
+    /**
+     * Remove this Object from the user likes
+     *
+     * @param int $user_id [if  null its added to the auth user]
+     *
+     */
+    public function removeLike($user_id = null)
+    {
+        $this->likes()->where('user_id', $this->getUserId($user_id))->delete();
+    }
+
+    /**
+     * Add deleted observer to delete likes registers
+     *
+     * @return void
+     */
+    public static function bootLikeable()
+    {
+        static::deleted(function ($model) {
+            $model->likes()->delete();
+        });
+    }
+
+    /**
      * @param null $user_id (if null its added to the auth user)
      *
      * @return null
