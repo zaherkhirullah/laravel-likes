@@ -59,6 +59,23 @@ trait Likable
     }
 
 
+    /**
+     * Count the number of likes
+     *
+     * @return int
+     */
+    public function getLikesCountAttribute()
+    {
+        return $this->likes()->count();
+    }
+
+    /**
+     * @return likesCount attribute
+     */
+    public function likesCount()
+    {
+        return $this->likes_count;
+    }
 
     /**
      * Add deleted observer to delete likes registers
