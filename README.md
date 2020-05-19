@@ -151,7 +151,7 @@ $article->isLiked(); // returns a boolean with true or false.
 
 ## Testing
 
-The package have integrated testing, so everytime you make a pull request your code will be tested.
+The package have integrated testing, so every time you make a pull request your code will be tested.
 
 ## Change log
 
