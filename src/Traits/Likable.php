@@ -58,6 +58,31 @@ trait Likable
         $this->isLiked($user_id) ? $this->removeLike($user_id) : $this->addLike($user_id);
     }
 
+    /**
+     * Check if the user has liked this Object
+     *
+     * @param int $user_id
+     *
+     * @return boolean
+     */
+    public function isLiked($user_id = null)
+    {
+        return $this->likes()->where('user_id', $this->getUserId($user_id))->exists();
+    }
+
+    /**
+     * Return a collection with the Users who marked as like this Object.
+     *
+     * @return Collection
+     */
+    public function likedBy()
+    {
+        $likes = $this->likes()->with('user')->get();
+
+        return $likes->mapWithKeys(function ($like) {
+            return [$like['user']->id => $like['user']];
+        });
+    }
 
     /**
      * Count the number of likes
