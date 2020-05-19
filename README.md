@@ -4,10 +4,10 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/hayrullah/laravel-likes.svg?style=flat-square)](https://packagist.org/packages/hayrullah/laravel-likes)
 [](https://github.com/hayrullah/laravel-likes/workflows/Run%20Tests/badge.svg?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/hayrullah/laravel-likes.svg?style=flat-square)](https://packagist.org/packages/hayrullah/laravel-likes)
-[PHP Composer](https://github.com/zaherkhirullah/laravel-likes/workflows/PHP%20Composer/badge.svg?branch=master)
+![PHP Composer](https://github.com/zaherkhirullah/laravel-likes/workflows/PHP%20Composer/badge.svg?branch=master)
 [![GitHub license](https://img.shields.io/github/license/zaherkhirullah/laravel-likes)](https://github.com/zaherkhirullah/laravel-likes)
 [![Quality Score](https://img.shields.io/scrutinizer/g/zaherkhirullah/laravel-likes.svg?style=flat-square)](https://scrutinizer-ci.com/g/zaherkhirullah/laravel-likes)
-[![`StyleCI](https://styleci.io/repos/264623457/shield)](https://styleci.io/repos/264623457)
+[![`StyleCI](https://styleci.io/repos/265126740/shield)](https://styleci.io/repos/265126740)
 
 ### 
 
