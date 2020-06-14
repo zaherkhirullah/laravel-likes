@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
 
 /**
- * This file is part of Laravel Like,.
  *
  * @license MIT
+ * @package Hayrullah/laravel-likes
+ *
+ * Copyright @2020 Zaher Khirullah
  */
 class Like extends Model
 {
